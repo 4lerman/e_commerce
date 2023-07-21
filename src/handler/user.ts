@@ -4,5 +4,5 @@ import middlewares from "../middlewares";
 
 export const user: Router = express.Router();
 
-user.get("", middlewares.cover(userController.getUser));
-user.post("", middlewares.cover(userController.createUser));
+user.get("/", middlewares.cover(userController.getUser));
+user.post("/register", middlewares.cover(userController.register));

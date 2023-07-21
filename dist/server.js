@@ -18,8 +18,8 @@ app.use((0, cookie_parser_1.default)());
 app.use(express_1.default.json());
 app.use("/api", handler_1.api);
 app.use(index_js_1.default.errorHandler);
-app.use("/", (req, res) => {
-    res.status(200).json("Working");
-});
+// app.use("/", (req: Request, res: Response) => {
+// 	res.status(200).json("Working");
+// });
 app.listen(PORT, () => console.log(`Server running on port - ${PORT}`));
 //# sourceMappingURL=server.js.map

@@ -8,6 +8,6 @@ const express_1 = __importDefault(require("express"));
 const user_1 = __importDefault(require("../controller/user"));
 const middlewares_1 = __importDefault(require("../middlewares"));
 exports.user = express_1.default.Router();
-exports.user.get("", middlewares_1.default.cover(user_1.default.getUser));
-exports.user.post("", middlewares_1.default.cover(user_1.default.createUser));
+exports.user.get("/", middlewares_1.default.cover(user_1.default.getUser));
+exports.user.post("/register", middlewares_1.default.cover(user_1.default.register));
 //# sourceMappingURL=user.js.map

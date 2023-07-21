@@ -18,8 +18,8 @@ app.use(express.json());
 app.use("/api", api);
 app.use(middlewares.errorHandler);
 
-app.use("/", (req: Request, res: Response) => {
-	res.status(200).json("Working");
-});
+// app.use("/", (req: Request, res: Response) => {
+// 	res.status(200).json("Working");
+// });
 
 app.listen(PORT, () => console.log(`Server running on port - ${PORT}`));

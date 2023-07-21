@@ -4,38 +4,47 @@ export interface createUserRM {
 	password: string;
 }
 
+export interface updateUserRM {
+	id: number;
+	email?: string;
+	name?: string;
+}
+
 export interface authRM {
 	email: string;
 	password: string;
 }
 
-export interface updateUserRM {
-    id: number;
-    email?: string;
-    name?: string;
+export interface createTokenRM {
+	userId: number;
+	token: string;
 }
 
+export interface saveTokenRM extends createTokenRM {}
+
+
 export interface createProductRM {
-    title: string;
-    price: number;
-    description: string;
-    category: string;
-    image: string;
-    amount: number;
+	title: string;
+	price: number;
+	description: string;
+	category: string;
+	image: string;
+	amount: number;
 }
 
 export interface updateProductRM {
-    id: number;
-    userId: number;
-    title: string;
-    price: number;
-    description: string;
-    category: string;
-    image: string;
-    amount: number;
+	id: number;
+	userId: number;
+	title: string;
+	price: number;
+	description: string;
+	category: string;
+	image: string;
+	amount: number;
 }
 
 export interface deleteProductRM {
-    id: number;
-    userId: number;
+	id: number;
+	userId: number;
 }
+

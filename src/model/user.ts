@@ -8,15 +8,7 @@ export interface User extends UserModel {}
 export interface RefreshToken extends RefreshTokensModel {}
 
 export interface UserRes {
-	id: number;
-	name?: string;
-	email: string;
-	products: Product[];
-    createdAt: Date;
-    updatedAt: Date;
-}
-
-export interface RefreshTokenRes {
-	userId: number;
+	[key: string]: any;
+	accessToken: string;
 	refreshToken: string;
 }

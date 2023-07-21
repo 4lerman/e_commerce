@@ -8,7 +8,7 @@ const InitUserRepo = () => {
     return {
         find: find,
         create: create,
-        updateById: updateById,
+        update: update,
         deleteById: deleteById,
     };
 };
@@ -28,10 +28,10 @@ const create = async (req) => {
         },
     });
 };
-const updateById = async (req) => {
+const update = async (req) => {
     const user = await prisma_1.default.user.findFirst({
         where: {
-            id: req.id,
+            email: req.email,
         },
     });
     if (!user)

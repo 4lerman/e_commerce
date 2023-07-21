@@ -5,7 +5,7 @@ import prisma from "../utils/prisma";
 interface IUserRepo {
 	find: (req: { id: number; email: string }) => Promise<User | null>;
 	create: (req: createUserRM) => Promise<User>;
-	updateById: (req: updateUserRM) => Promise<User>;
+	update: (req: updateUserRM) => Promise<User>;
 	deleteById: (id: number) => Promise<User>;
 }
 
@@ -13,7 +13,7 @@ const InitUserRepo = (): IUserRepo => {
 	return {
 		find: find,
 		create: create,
-		updateById: updateById,
+		update: update,
 		deleteById: deleteById,
 	};
 };
@@ -39,10 +39,10 @@ const create = async (req: createUserRM): Promise<User> => {
 	});
 };
 
-const updateById = async (req: updateUserRM): Promise<User> => {
+const update = async (req: updateUserRM): Promise<User> => {
 	const user = await prisma.user.findFirst({
 		where: {
-			id: req.id,
+			email: req.email,
 		},
 	});
 

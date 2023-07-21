@@ -4,10 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const user_1 = __importDefault(require("../services/user"));
+const express_validator_1 = require("express-validator");
 const InitUserController = () => {
     return {
         getUser: getUser,
-        createUser: createUser,
+        register: register,
     };
 };
 const getUser = async (req, res, next) => {
@@ -20,19 +21,33 @@ const getUser = async (req, res, next) => {
         throw { status: 404, message: "Does not exist" };
     res.status(200).json(user);
 };
-const createUser = async (req, res, next) => {
+const register = async (req, res, next) => {
+    const errors = (0, express_validator_1.validationResult)(req);
+    if (!errors.isEmpty())
+        throw { status: 400, message: "invalid input" };
+    const { name, email, password } = req.body;
     const data = {
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password,
+        name: name,
+        email: email,
+        password: password,
     };
     const userExists = await user_1.default.find({
-        ...req.body.id,
-        ...req.body.email,
+        id: req.body.id,
+        email: req.body.email,
     });
     if (userExists)
         throw { status: 403, message: "Already exists" };
     const newUser = await user_1.default.create(data);
+    res.cookie("accessToken", newUser.accessToken, {
+        maxAge: 5 * 60 * 1000,
+        httpOnly: false,
+        path: "/",
+    });
+    res.cookie("refreshToken", newUser.refreshToken, {
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        httpOnly: false,
+        path: "/",
+    });
     res.status(200).json(newUser);
 };
 exports.default = InitUserController();
