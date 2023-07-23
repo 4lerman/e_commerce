@@ -23,24 +23,31 @@ export interface createTokenRM {
 export interface saveTokenRM extends createTokenRM {}
 
 
+export interface getProductRM {
+	title: string;
+	price?: number;
+	category?: string;
+}
+
 export interface createProductRM {
 	title: string;
 	price: number;
 	description: string;
 	category: string;
-	image: string;
+	image?: string;
 	amount: number;
+	userId: number;
 }
 
 export interface updateProductRM {
 	id: number;
 	userId: number;
-	title: string;
-	price: number;
-	description: string;
-	category: string;
-	image: string;
-	amount: number;
+	title?: string;
+	price?: number;
+	description?: string;
+	category?: string;
+	image?: string;
+	amount?: number;
 }
 
 export interface deleteProductRM {

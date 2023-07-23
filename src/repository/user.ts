@@ -26,6 +26,9 @@ const find = async (req: {
 		where: {
 			OR: [{ id: req.id }, { email: req.email }],
 		},
+		include: {
+			products: true,
+		},
 	});
 };
 
@@ -55,6 +58,9 @@ const update = async (req: updateUserRM): Promise<User> => {
 		},
 		where: {
 			id: req.id,
+		},
+		include: {
+			products: true,
 		},
 	});
 };
