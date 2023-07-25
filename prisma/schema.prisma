@@ -29,7 +29,7 @@ model RefreshTokens {
   userId Int    @id
   token  String
 
-  user User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("refresh_tokens")
 }
@@ -43,7 +43,7 @@ model Product {
   category    String
   image       String?
   amount      Int
-  User        User?   @relation(fields: [userId], references: [id])
+  User        User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      Int?
 
   @@map("products")

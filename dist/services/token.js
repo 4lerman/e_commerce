@@ -49,7 +49,7 @@ const validateAToken = async (accessToken) => {
 };
 const validateRToken = async (refreshToken) => {
     try {
-        const user = jsonwebtoken_1.default.verify(refreshToken, String(process.env.ACCESS_TOKEN_SECRET));
+        const user = jsonwebtoken_1.default.verify(refreshToken, String(process.env.REFRESH_TOKEN_SECRET));
         const token = await token_1.default.find({
             userId: 0,
             refreshToken: refreshToken,

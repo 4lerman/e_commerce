@@ -80,7 +80,7 @@ const validateRToken = async (refreshToken: string): Promise<JwtPayload | undefi
 	try {
 		const user = jwt.verify(
 			refreshToken,
-			String(process.env.ACCESS_TOKEN_SECRET)
+			String(process.env.REFRESH_TOKEN_SECRET)
 		) as JwtPayload;
 
 		const token = await tokenModel.find({

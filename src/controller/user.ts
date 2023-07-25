@@ -35,10 +35,11 @@ const getUserById = async (req: Request, res: Response, next: NextFunction) => {
 	const user = (await userService.find({ id: parseInt(id), email: "" })) as {
 		[key: string]: any;
 	};
-	delete user.password;
 
 	if (!user || user === undefined)
 		throw { status: 404, message: "Does not exist" };
+
+	delete user.password;
 
 	res.status(200).json(user);
 };

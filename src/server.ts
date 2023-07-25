@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import config from "./config";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import middlewares from "./middlewares/index.js";
+import middlewares from "./middlewares/error.js";
 import { api } from "./handler";
 
 dotenv.config();

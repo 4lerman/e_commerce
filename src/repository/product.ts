@@ -28,6 +28,7 @@ const find = async (req: getProductRM): Promise<Product[]> => {
 	return await prisma.product.findMany({
 		where: {
 			price: {
+				gt: 1,
 				lte: req.price,
 			},
 			category: req.category,

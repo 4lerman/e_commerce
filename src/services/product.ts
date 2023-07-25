@@ -41,7 +41,7 @@ const create = async (req: createProductRM): Promise<Product> => {
 		category: req.category,
 	});
 
-	if (products) throw { status: 403, message: "products already exists" };
+	if (products.length > 0) throw { status: 403, message: "products already exists" };
 
 	const newProduct = await productModel.create(req);
 	return newProduct;

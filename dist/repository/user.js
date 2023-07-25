@@ -17,6 +17,9 @@ const find = async (req) => {
         where: {
             OR: [{ id: req.id }, { email: req.email }],
         },
+        include: {
+            products: true,
+        },
     });
 };
 const create = async (req) => {
@@ -43,6 +46,9 @@ const update = async (req) => {
         },
         where: {
             id: req.id,
+        },
+        include: {
+            products: true,
         },
     });
 };

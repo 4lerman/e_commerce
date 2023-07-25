@@ -26,15 +26,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.user = void 0;
+exports.product = void 0;
 const express_1 = __importDefault(require("express"));
-const user_1 = __importDefault(require("../controller/user"));
+const product_1 = __importDefault(require("../controller/product"));
 const error_1 = __importDefault(require("../middlewares/error"));
 const auth = __importStar(require("../middlewares/auth"));
-exports.user = express_1.default.Router();
-exports.user.get("/:id", auth.verify, error_1.default.cover(user_1.default.getUserById));
-exports.user.post("/register", error_1.default.cover(user_1.default.register));
-exports.user.post("/login", error_1.default.cover(user_1.default.login));
-exports.user.post("/logout", error_1.default.cover(user_1.default.logout));
-exports.user.post("/refresh", error_1.default.cover(user_1.default.refresh));
-//# sourceMappingURL=user.js.map
+exports.product = express_1.default.Router();
+exports.product.get("", auth.verify, error_1.default.cover(product_1.default.getByDetails));
+exports.product.get("/myproducts", auth.verify, error_1.default.cover(product_1.default.getUserProducts));
+exports.product.post("", auth.verify, error_1.default.cover(product_1.default.createProduct));
+exports.product.put("/:id", auth.verify, error_1.default.cover(product_1.default.updateProduct));
+exports.product.delete("/:id", auth.verify, error_1.default.cover(product_1.default.deleteProduct));
+//# sourceMappingURL=product.js.map
